@@ -1,0 +1,7 @@
+body {
+    height: 100%;
+}
+.game {
+    height: 98vh;
+    display: flex;
+}
