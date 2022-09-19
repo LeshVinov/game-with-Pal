@@ -2,6 +2,7 @@ const background = () => {
     const body = document.querySelector('body')
     const gameSection = document.querySelector('.game')
     const playerBlock = document.createElement('div')
+    playerBlock.classList.add('player-block')
     console.log('1');
 
 

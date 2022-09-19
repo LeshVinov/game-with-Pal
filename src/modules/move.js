@@ -1,49 +1,54 @@
 import { animate } from './helpers'
 
 const move = () => {
-    const playerBlock = document.querySelector('.game > div')
-    console.log('2');
+    const playerBlock = document.querySelector('.player-block')
+    const escapeScreen = document.querySelector('.escape-screen')
     let startBottom = 100
     let startLeft = 50
+
+    console.dir(window);
 
     const start = (e) => {
         if (e.key === 'Escape') {
             document.removeEventListener('keydown', start)
+            escapeScreen.style.display = "none"
             document.addEventListener('keydown', movement)
         }
     }
 
     const movement = (e) => {
         if (e.key === "ArrowUp") {
-            if (startBottom < 506) {
+            if (startBottom < (window.innerHeight - 450)) {
                 animate({
                     duration: 100,
                     timing(timeFraction) {
                       return timeFraction;
                     },
                     draw(progress) {
-                        playerBlock.style.bottom = startBottom + progress * 5 + 'px';
+                        playerBlock.style.bottom = startBottom + progress * 10 + 'px';
                     }
-                  });
+                });
                 startBottom = startBottom + 5
             }
+
             // playerBlock.style.bottom = `${startBottom}px`
         } else if (e.key === "ArrowDown") {
-            if (startBottom > 0) {
+            if (startBottom) {
                 animate({
                     duration: 100,
                     timing(timeFraction) {
                       return timeFraction;
                     },
                     draw(progress) {
-                        playerBlock.style.bottom = startBottom - progress * 5 + 'px';
+                        playerBlock.style.bottom = startBottom - progress * 10 + 'px';
                     }
                   });
                 startBottom = startBottom - 5
             }
             // playerBlock.style.bottom = `${startBottom}px`
         } else if (e.key === "ArrowLeft") {
-            if (startLeft > 4.5) {
+            playerBlock.style.transform='scale(1,1)'
+            if (startLeft) {
                 animate({
                     duration: 100,
                     timing(timeFraction) {
@@ -57,8 +62,8 @@ const move = () => {
             }
             // playerBlock.style.left = `${startLeft}px`
         } else if (e.key === "ArrowRight") {
-            if (startLeft < 94.5) {
-                console.log(startLeft);
+            playerBlock.style.transform='scale(-1,1)'
+            if (startLeft < 95.5) {
                 animate({
                     duration: 100,
                     timing(timeFraction) {
@@ -73,6 +78,7 @@ const move = () => {
             // playerBlock.style.left = `${startLeft}px`
         } if (e.key === "Escape") {
             document.removeEventListener('keydown', movement)
+            escapeScreen.style.display = "block"
             document.addEventListener('keydown', start)
         } 
     }
