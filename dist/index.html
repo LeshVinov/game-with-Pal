@@ -6,11 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game</title>
     <link rel="stylesheet" href="./css/style.css">
-    <script src="./main.js" defer></script>
+    <script src="./js/main.js" defer></script>
 </head>
 <body>
     <header class="header"></header>
     <section class="game" id="game">
+        <div class="timer-container">
+            <div class="timer-container-group">
+                <p class="timer-container__hours">00</p>
+                <span>:</span>
+            </div>
+            <div class="timer-container-group">
+                <p class="timer-container__minutes">00</p>
+                <span>:</span>
+            </div>            
+            <div class="timer-container-group">
+                <p class="timer-container__seconds">00</p>
+            </div>
+        </div>
         <div class="escape-screen">
             <div class="container-for-text">
                 <p class="escape-screen__text">Гослинг ждёт Вас</p>

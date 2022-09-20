@@ -1,4 +1,5 @@
 import { animate } from './helpers'
+import timer from './timer'
 
 const move = () => {
     const playerBlock = document.querySelector('.player-block')
@@ -6,7 +7,7 @@ const move = () => {
     let startBottom = 100
     let startLeft = 50
 
-    console.dir(window);
+    timer()
 
     const start = (e) => {
         if (e.key === 'Escape') {
@@ -48,7 +49,7 @@ const move = () => {
             // playerBlock.style.bottom = `${startBottom}px`
         } else if (e.key === "ArrowLeft") {
             playerBlock.style.transform='scale(1,1)'
-            if (startLeft) {
+            if (startLeft > 3) {
                 animate({
                     duration: 100,
                     timing(timeFraction) {
