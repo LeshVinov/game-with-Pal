@@ -1,13 +1,11 @@
 import { animate } from './helpers'
-import timer from './timer'
+import { timer } from './timer'
 
 const move = () => {
     const playerBlock = document.querySelector('.player-block')
     const escapeScreen = document.querySelector('.escape-screen')
     let startBottom = 100
     let startLeft = 50
-
-    timer()
 
     const start = (e) => {
         if (e.key === 'Escape') {
@@ -85,6 +83,7 @@ const move = () => {
     }
 
     document.addEventListener('keydown', movement)
+    timer()
 }
 
 export default move

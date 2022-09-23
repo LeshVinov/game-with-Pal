@@ -1,54 +1,37 @@
 const timer = () => {
-    const timerHours = document.querySelector('.timer-container__hours')
-    const timerMinutes = document.querySelector('.timer-container__minutes')
-    const timerSeconds = document.querySelector('.timer-container__seconds')
+    const timerBlock = document.querySelector('.timer')
 
-    let sec = 0
-    let min = 0
-    let hrs = 0
+    let seconds = 0
+    let interval
+    let minutes = 0
 
-    let timerOn = true
-
-    let intervalID
-
-    function tick(){
-        sec++;
-        if (sec >= 60) {
-            sec = 0
-            min++
-            if (min >= 60) {
-                min = 0
-                hrs++
-            }
-        }
+    const render = (minutes, seconds) => {
+        timerBlock.textContent = `${minutes} : ${seconds}`
     }
 
-    const updateClock = () => {
-        tick()
-        const zeroToNumber = () => {
-            if (hrs < 10) {
-                timerHours.textContent = '0' + hrs
-            }
-            if (min < 10) {
-                timerMinutes.textContent = '0' + min
-            }
-            if (sec < 10) {
-                timerSeconds.textContent = '0' + sec
-            }
+    const timePlus = () => {
+        let fullMinutes = '00'
+        let fullSeconds = '00'
+        seconds++
+        if (seconds >= 60) {
+            minutes += 1
+            seconds = 0
         }
-
-        timerHours.textContent = hrs
-        timerMinutes.textContent = min
-        timerSeconds.textContent = sec
-        
-        zeroToNumber()
-        
+        if (minutes < 10) {
+            fullMinutes = `0${minutes}`
+        } else {
+            fullMinutes = minutes
+        }
+        if (seconds < 10) {
+            fullSeconds = `0${seconds}`
+        } else {
+            fullSeconds = seconds
+        }
+        render(fullMinutes, fullSeconds)
     }
-    intervalID = setInterval(() => {
-        updateClock()
-    }, 1000);
+    interval = setInterval(timePlus, 1000)
 }
 
 
 
-export default timer
+export { timer }
