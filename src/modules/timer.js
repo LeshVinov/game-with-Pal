@@ -1,4 +1,4 @@
-const timer = () => {
+const timer = (timerOn) => {
     const timerBlock = document.querySelector('.timer')
 
     let seconds = 0
@@ -29,7 +29,6 @@ const timer = () => {
         }
         render(fullMinutes, fullSeconds)
     }
-    interval = setInterval(timePlus, 1000)
 }
 
 
